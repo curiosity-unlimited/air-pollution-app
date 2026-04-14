@@ -2,6 +2,7 @@ import os
 import requests
 from dotenv import load_dotenv
 from utils import validate_coordinates
+from typing import Optional, Dict
 
 # Load environment variables from .env file
 load_dotenv()
@@ -9,7 +10,7 @@ load_dotenv()
 # Example usage of an API key from .env
 API_KEY = os.getenv("API_KEY")
 
-def get_coordinates(location):
+def get_coordinates(location: str) -> Optional[Dict[str, float]]:
     """
     Fetch longitude and latitude for a given location using OpenWeather Geocoding API.
 
@@ -17,7 +18,7 @@ def get_coordinates(location):
         location (str): The name of the location (e.g., city name).
 
     Returns:
-        dict: A dictionary containing 'latitude' and 'longitude' if successful, otherwise None.
+        Optional[Dict[str, float]]: A dictionary containing 'latitude' and 'longitude' if successful, otherwise None.
     """
     if not API_KEY:
         print("API Key not found. Please check your .env file.")
@@ -50,7 +51,7 @@ def get_coordinates(location):
         print(f"An error occurred: {e}")
         return None
 
-def get_air_pollution_data(latitude, longitude):
+def get_air_pollution_data(latitude: float, longitude: float) -> Optional[Dict]:
     """
     Fetch air pollution data for given coordinates using OpenWeather Air Pollution API.
 
@@ -59,7 +60,7 @@ def get_air_pollution_data(latitude, longitude):
         longitude (float): Longitude of the location.
 
     Returns:
-        dict: Air pollution data if successful, otherwise None.
+        Optional[Dict]: Air pollution data if successful, otherwise None.
     """
     if not API_KEY:
         print("API Key not found. Please check your .env file.")
