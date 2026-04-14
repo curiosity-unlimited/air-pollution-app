@@ -1,7 +1,6 @@
 from dotenv import load_dotenv
 import os
 from api_requests import get_coordinates, get_air_pollution_data
-from utils import validate_coordinates
 
 # Load environment variables from .env file
 load_dotenv()
