@@ -1,44 +1,58 @@
 # Air Pollution App
-- An educational application that allows users to retrieve and display air pollution data for locations around the world using OpenWeather's APIs.
+- An educational application that allows users to retrieve and display air pollution data for locations around the world.
 
 ## Features
-- Two demo branches are available: `demo-edit-mode` and `demo-agent-mode`.
-    - If you're working with Edit mode, you can compare your progress with `demo-edit-mode` branch.
-    - If you're working with Agent mode, you can compare your progress with `demo-agent-mode` branch.
+- Two demo branches are available: `demo/agent-mode` and `demo/plan-agent-mode`.
+    - If you're working with Agent mode, you can compare your progress with `demo/agent-mode` branch.
+    - If you're working with Plan/Agent mode, you can compare your progress with `demo/plan-agent-mode` branch.
 
-## Setup
+## Getting Started
+1. Fork the Repository on GitHub
+    1. Go to the repository: https://github.com/curiosity-unlimited/air-pollution-app.git
+    2. Click the "Fork" button in the top-right corner
+    3. **IMPORTANT: Please uncheck the "Copy the DEFAULT branch only" option when forking in order to copy all branches into the new fork.**
+    4. GitHub will create a copy under your account: https://github.com/YOUR-USERNAME/air-pollution-app
 
-1. Clone the repository:
-   ```
-   git clone https://github.com/curiosity-unlimited/air-pollution-app.git
-   cd air-pollution-app
-   ```
-
-2. Fetch all the branches:
+2. Clone the repository from YOUR fork (not the original):
+    ```bash
+    # Replace YOUR-USERNAME with your GitHub Account
+    git clone https://github.com/YOUR-USERNAME/air-pollution-app
+    cd air-pollution-app
     ```
-    git fetch --all
+
+3. Fetch all branches and tags so that you can see both the initial code and the instructor's implementation:
+    ```bash
+    git fetch origin --tags
     ```
 
-3. Check all the branches and make sure `demo-edit-mode` and `demo-agent-mode` are in the list:
-    ```
+4. Check all branches and make sure all `demo` branches are in the list:
+    ```bash
     git branch -a
     ```
 
-4. Create a new branch, `edit-mode` for example, if you're working on Edit mode:
-    ```
-    git checkout -b edit-mode
-    ```
-
-5. Create a new branch, `agent-mode` for example, if you're working on Agent mode:
-    ```
-    git checkout -b agent-mode
+5. Make sure you're on the `main` branch:
+    ```bash
+    git checkout main
     ```
 
-6. To compare your progress, you can first switch to `demo-edit-mode` or `demo-agent-mode` branch and checkout specific commit or step if necessary. Take Edit mode for example:
+6. Create a new branch, `develop/agent-mode` and `develop/plan-agent-mode`, for example, for your own work:
+    ```bash
+    git checkout -b develop/agent-mode
+    git checkout -b develop/plan-agent-mode
     ```
-    git checkout demo-edit-mode
-    git checkout <commit-hash>
+
+7. To compare your progress with the instructor's:
+    ```bash
+    # List all milesones
+    git tag -n
+    # Compare with a specific milestone
+    git diff your-branch-name..tag-name
+    # See all differences between your work and the reference
+    git diff your-branch-name..demo/agent-mode
+    git diff your-branch-name..demo/plan-agent-mode
     ```
+
+8. For a more comprehensive guide, please follow instructions in [`CONTRIBUTING.md`](./CONTRIBUTING.md)
 
 ## License
 
