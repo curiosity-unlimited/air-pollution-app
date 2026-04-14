@@ -1,6 +1,7 @@
 import os
 import requests
 from dotenv import load_dotenv
+from utils import validate_coordinates
 
 # Load environment variables from .env file
 load_dotenv()
@@ -34,13 +35,16 @@ def get_coordinates(location):
         data = response.json()
 
         if data:
-            return {
-                "latitude": data[0]["lat"],
-                "longitude": data[0]["lon"]
-            }
-        else:
-            print("No data found for the given location.")
-            return None
+            latitude = data[0]["lat"]
+            longitude = data[0]["lon"]
+            if validate_coordinates(latitude, longitude):
+                return {
+                    "latitude": latitude,
+                    "longitude": longitude
+                }
+            else:
+                print("Invalid coordinates received.")
+                return None
 
     except requests.exceptions.RequestException as e:
         print(f"An error occurred: {e}")

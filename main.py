@@ -1,6 +1,7 @@
 from dotenv import load_dotenv
 import os
 from api_requests import get_coordinates
+from utils import validate_coordinates
 
 # Load environment variables from .env file
 load_dotenv()
