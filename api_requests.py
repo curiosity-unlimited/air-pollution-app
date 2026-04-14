@@ -49,3 +49,34 @@ def get_coordinates(location):
     except requests.exceptions.RequestException as e:
         print(f"An error occurred: {e}")
         return None
+
+def get_air_pollution_data(latitude, longitude):
+    """
+    Fetch air pollution data for given coordinates using OpenWeather Air Pollution API.
+
+    Args:
+        latitude (float): Latitude of the location.
+        longitude (float): Longitude of the location.
+
+    Returns:
+        dict: Air pollution data if successful, otherwise None.
+    """
+    if not API_KEY:
+        print("API Key not found. Please check your .env file.")
+        return None
+
+    base_url = "http://api.openweathermap.org/data/2.5/air_pollution"
+    params = {
+        "lat": latitude,
+        "lon": longitude,
+        "appid": API_KEY
+    }
+
+    try:
+        response = requests.get(base_url, params=params)
+        response.raise_for_status()
+        return response.json()
+
+    except requests.exceptions.RequestException as e:
+        print(f"An error occurred while fetching air pollution data: {e}")
+        return None

@@ -1,6 +1,6 @@
 from dotenv import load_dotenv
 import os
-from api_requests import get_coordinates
+from api_requests import get_coordinates, get_air_pollution_data
 from utils import validate_coordinates
 
 # Load environment variables from .env file
@@ -20,6 +20,13 @@ def main():
 
     if coordinates:
         print(f"Coordinates for {location}: {coordinates}")
+
+        # Fetch air pollution data
+        air_pollution_data = get_air_pollution_data(coordinates['latitude'], coordinates['longitude'])
+        if air_pollution_data:
+            print("Air Pollution Data:", air_pollution_data)
+        else:
+            print("Could not fetch air pollution data.")
     else:
         print("Could not fetch coordinates.")
 
